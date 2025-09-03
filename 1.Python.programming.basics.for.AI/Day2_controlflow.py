@@ -71,8 +71,8 @@ whileLoop: Executes as long as a condition is True
                 print(i)
 """
 
-#Hands-On Exercise
-    # Check if a Number is Prime
+#HANDS-ON EXERCISE
+    # 1. Check if a Number is Prime
 """
     num = int(input("Enter a number: "))
 
@@ -86,7 +86,7 @@ whileLoop: Executes as long as a condition is True
     else:
         print (f"{num} is not a prime number")
 """
-    # Create a Menu-Driven Calculator
+    # 2. Create a Menu-Driven Calculator
 """ 
     def add(a, b):
         return a + b     
@@ -131,7 +131,7 @@ whileLoop: Executes as long as a condition is True
             print("Invalid choice, Please try again")
 """        
         
-    # Create program to calculate the factorial of a number using a while loop
+    # 3. Create program to calculate the factorial of a number using a while loop
         
 def calculate_factorial(number):
     if not isinstance(number, int) or number < 0:
@@ -159,29 +159,6 @@ try:
         
 except ValueError:
     print("Invalid input. Please enter a valid integer.")
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
     
@@ -214,4 +191,6 @@ except ValueError:
         `//=`       : Floor divide and assign
         `%=`        : Modulus and assign
         `**=`       : Exponentiate and assign
+    Additional:
+        `s[::-1]`   : Slicing / reverses the string by stepping backward through it
 """
