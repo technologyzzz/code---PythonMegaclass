@@ -1,4 +1,6 @@
 # CONDITIONAL STATEMENTS
+    # Conditional statements in Python are programming constructs that allow a program to make decisions and execute different blocks of code based on whether a specified condition evaluates to True or False. 
+    # They are fundamental for controlling the flow of a program and enabling it to respond dynamically to various situations or data.
 """
 if: Executes code if a condition is True
 elif: Adds additional conditions after the initial if 
@@ -28,7 +30,10 @@ else: Executes code if none of the previous conditions are met
 
 
     
-#LOOPS
+# LOOPS
+    # Loops in Python are control flow statements that allow a block of code to be executed repeatedly. 
+    # They are fundamental for automating repetitive tasks and processing collections of data efficiently. 
+    # Python offers two primary types of loops: 
 """
 forLoop: Iterates over a sequence
 whileLoop: Executes as long as a condition is True
@@ -56,16 +61,16 @@ whileLoop: Executes as long as a condition is True
     # Using break adn continue for Control Flow 
         # break: Terminates the loop prematurely when a condition is met
 """
-            for i in range(10)
+            for i in range(10):
                 if i == 5:
                     break
-                print (i)
+                print(i)
                 
             print ("Outside For Loop")
 """
         # continue : Skips the current iteration and proceeds to the next 
 """
-            for i in range(10)
+            for i in range(10):
                 if i % 2 == 0:
                     continue 
                 print(i)
@@ -126,7 +131,7 @@ whileLoop: Executes as long as a condition is True
         elif choice == "3":
             print("Result:", multiply(num1, num2))
         elif choice == "4":
-            print("Result:", subtract(num1, num2))
+            print("Result:", divide(num1, num2))
         else:
             print("Invalid choice, Please try again")
 """        
@@ -192,5 +197,5 @@ except ValueError:
         `%=`        : Modulus and assign
         `**=`       : Exponentiate and assign
     Additional:
-        `s[::-1]`   : Slicing / reverses the string by stepping backward through it
+        `[::-1]`   : Slicing / reverses the string by stepping backward through it
 """
