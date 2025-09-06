@@ -25,7 +25,7 @@ print("Hello World")
 # Define variables of different data types
 # Python data types classify data items, indicating the kind of value a variable can hold and determining the operations that can be performed on that data. 
 # In Python, everything is an object, meaning data types are essentially classes, and variables are instances (objects) of these classes. 
-"""
+
 integer_var = 42
 float_var = 3.14
 string_var = "AI"
@@ -43,5 +43,5 @@ print ("List: ", list_var)
 print ("Tupple: ", tuple_var)
 print ("Dictionary Value:", dict_var["name"])
 print ("Boolean:", bool_var)
-"""
+
        

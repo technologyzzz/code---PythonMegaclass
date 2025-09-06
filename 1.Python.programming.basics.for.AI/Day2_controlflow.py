@@ -137,7 +137,7 @@ whileLoop: Executes as long as a condition is True
 """        
         
     # 3. Create program to calculate the factorial of a number using a while loop
-        
+       
 def calculate_factorial(number):
     if not isinstance(number, int) or number < 0:
         return "Factorial is not defined for negative or non-integer numbers."
@@ -164,7 +164,7 @@ try:
         
 except ValueError:
     print("Invalid input. Please enter a valid integer.")
-        
+ 
         
     
 #ARITHMETHIC OPERATORS IN PYTHON 

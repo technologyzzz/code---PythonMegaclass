@@ -127,7 +127,7 @@
         print("Please enter a valid integer.")
 """
     # 4. Create a module for string operations, including functions to reverse a string, count vowels, and check for palindromes. Import it into a script and test the functions
-"""    
+ 
 # String Operations Module. Provides functions for string manipulation and analysis.
     def reverse_string(s):
     
@@ -192,4 +192,3 @@
 
     if __name__ == "__main__":
         test_all_functions()
-"""    
