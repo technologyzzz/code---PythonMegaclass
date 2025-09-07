@@ -143,39 +143,41 @@
         main()
 """    
     # 4. Create a program that counts the number of occurrences of a specific word in a text file
+"""
+    def simple_word_count(filename, target_word, case_sensitive=False):
+        
+        #Simple word count using string splitting.
+        #Note: This may count word parts, not just whole words.
+        
+        try:
+            with open(filename, 'r', encoding='utf-8') as file:
+                text = file.read()
+            
+            if not case_sensitive:
+                text = text.lower()
+                target_word = target_word.lower()
+            
+            # Split text into words (simple approach)
+            # words = text.split() XX XX
+            # Instead of splitting by space, we find all sequences of "word" characters.
+            # \w+ is a regex pattern for one or more letters, numbers, or underscores.
+            words = re.findall(r'\w+', text)
+            
+            # Count exact matches
+            count = words.count(target_word)
+            return count
+        
+        except FileNotFoundError:
+            print(f"Error: The file '{filename}' does not exist.")
+            return 0
 
-def simple_word_count(filename, target_word, case_sensitive=False):
-    """
-    Simple word count using string splitting.
-    Note: This may count word parts, not just whole words.
-    """
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            text = file.read()
-        
-        if not case_sensitive:
-            text = text.lower()
-            target_word = target_word.lower()
-        
-        # Split text into words (simple approach)
-        words = text.split()
-        
-        # Count exact matches
-        count = words.count(target_word)
-        
-        return count
-    
-    except FileNotFoundError:
-        print(f"Error: The file '{filename}' does not exist.")
-        return 0
+    # Usage
+    filename = "sample.txt"
+    target_word = "Python"
+    count = simple_word_count(filename, target_word, case_sensitive=False)
+    print(f"The word '{target_word}' appears {count} times.")
+"""  
 
-# Usage
-filename = "sample.txt"
-target_word = "Python"
-count = simple_word_count(filename, target_word, case_sensitive=False)
-print(f"The word '{target_word}' appears {count} times.")
-    
-    
     # 5. Write a program to log messages with timestamps into a file
     
 import datetime
@@ -235,7 +237,7 @@ def view_log(log_file="message_log.txt", num_entries=None):
             for line in lines:
                 print(line.strip())
             print("--- End of Log ---")
-    
+
     except Exception as e:
         print(f"Error reading log file: {str(e)}")
 
@@ -263,9 +265,9 @@ def clear_log(log_file="message_log.txt"):
         print(f"Error clearing log file: {str(e)}")
 
 def main():
-    """
-    Main function to run the message logger.
-    """
+    
+    #Main function to run the message logger.
+    
     log_file = "message_log.txt"  # Default log file
     
     while True:
@@ -304,18 +306,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
