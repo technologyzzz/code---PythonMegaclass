@@ -18,17 +18,17 @@
             #Refraining from coding patterns more common in other languages that might be less efficient or clear in Python, such as over-reliance on traditional loops when comprehensions are more suitable, or excessive use of explicit if/else checks when Python's truthiness can be leveraged.
 
 # 2. List Comprehension
-    
-    # 1 [expression for item in iterable if condition]
+"""   
+        #[expression for item in iterable if condition]
 
-        # Create a list of squares
-squares = [x**2 for x in range(10)]
-print(squares)
+            # Create a list of squares
+    squares = [x**2 for x in range(10)]
+    print(squares)
 
-        # Filters Even Numbers
-evens = [x for x in range(100) if x % 2 == 0] #!== for Odd Numbers
-print(evens)
-
+            # Filters Even Numbers
+    evens = [x for x in range(100) if x % 2 == 0] #!== for Odd Numbers
+    print(evens)
+"""
 # 3. Lambda Functions
     #A Python lambda function is a small, anonymous function defined using the lambda keyword. 
     #Unlike regular functions defined with def, lambda functions are concise, typically written in a single line, and do not require a return statement as they implicitly return the result of their single expression. 
@@ -77,93 +77,103 @@ print(evens)
 
 import os
 
-#file to store tasks
-FILE_NAME = ""
+# file to store tasks
+FILE_NAME = "tasks.txt"
 
-#load tasks from file
+# load tasks from file
 def load_tasks():
     tasks = {}
-    if os.path.exist(FILE_NAME):
-        with open(FILE.NAME, "r") as file:
-            for line in files:
-                task_id, title, status = line.strip(). split(" | ")
-                tasks[int(task_id_)] = {"title": title, "status": status}
+    # --- FIX --- 'exists' is the correct method name.
+    if os.path.exists(FILE_NAME):
+        # --- FIX --- Correct variable name.
+        with open(FILE_NAME, "r") as file:
+            # --- FIX --- Loop over 'file', not a non-existent 'files'.
+            for line in file:
+                # --- FIX --- Added a check for empty lines to prevent crashes.
+                if line.strip(): 
+                    task_id, title, status = line.strip().split(" | ")
+                    # --- FIX --- Trailing underscore removed from task_id.
+                    tasks[int(task_id)] = {"title": title, "status": status}
     return tasks
 
-#save tasks to file
+# save tasks to file
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as file:
-        for task_id, task in tasks.items():
-            file.write(f"{tasks_id} | {tasks['title']} | {task['status']}\n")
-            
-#add a new task
+        for task_id, task_data in tasks.items():
+            # --- CRITICAL LOGIC FIX ---
+            # You must use the loop variables ('task_id', 'task_data'),
+            # not the entire 'tasks' dictionary in the f-string.
+            file.write(f"{task_id} | {task_data['title']} | {task_data['status']}\n")
+
+# add a new task
 def add_task(tasks):
-    title = input("Enter tasks title:")
-    tasks_id = max(tasks.keys(), default=0) + 1
+    title = input("Enter task title: ")
+    # --- FIX --- 'task_id' is the correct variable name.
+    task_id = max(tasks.keys(), default=0) + 1
     tasks[task_id] = {"title": title, "status": "incomplete"}
     print(f"Task '{title}' added.")
-    
-#viw all tasks
+
+# view all tasks
 def view_tasks(tasks):
     if not tasks:
         print("No tasks available.")
     else:
-        for task_id, task in tasks.items():
-            print(f"[{tasks_id}] {task['title']} - {task['status']}")
-            
-#mark task as complete / delete
+        for task_id, task_data in tasks.items():
+            # --- CRITICAL LOGIC FIX --- Use the loop variables.
+            print(f"[{task_id}] {task_data['title']} - {task_data['status']}")
+
+# mark task as complete / delete
 def mark_task_complete(tasks):
-    tasl_id = int(input("Enter task ID to mark as complete: "))
+    # --- FIX --- Typo in 'task_id'.
+    task_id = int(input("Enter task ID to mark as complete: "))
     if task_id in tasks:
         tasks[task_id]["status"] = "complete"
         print(f"Task '{tasks[task_id]['title']}' marked as complete.")
     else:
         print("Task ID not found.")
-        
+
 def delete_task(tasks):
-    tasl_id = int(input("Enter task ID to mark to Delete: "))
+    # --- FIX --- Typo in 'task_id'.
+    task_id = int(input("Enter task ID to delete: "))
     if task_id in tasks:
         deleted_task = tasks.pop(task_id)
         print(f"Task '{deleted_task['title']}' deleted.")
     else:
         print("Task ID not found.")
 
-#main menu
+# main menu
 def main():
     tasks = load_tasks()
     while True:
         print("\nTask Manager Menu")
-        print("1. Add Tasks")
-        print("2. View Task")
+        print("1. Add Task")
+        print("2. View Tasks")
         print("3. Mark Task as Complete")
-        print("4. Delete Task")        
+        print("4. Delete Task")
         print("5. Exit")
         choice = input("Enter your choice: ")
         
-        if choice =="1":
+        if choice == "1":
             add_task(tasks)
+            # --- SUGGESTION for robust code ---
+            # To fix the data loss flaw, you should save after every change.
+            # save_tasks(tasks) 
         elif choice == "2":
             view_tasks(tasks)
         elif choice == "3":
-            mark_tasks_complete(tasks)
+            # --- FIX --- Correct function name.
+            mark_task_complete(tasks)
+            # save_tasks(tasks) # Also save here
         elif choice == "4":
             delete_task(tasks)
+            # save_tasks(tasks) # And here
         elif choice == "5":
             save_tasks(tasks)
             print("Goodbye")
             break
         else:
-            print("Incalid Choice. Please try again")
-            
+            # --- FIX --- Typo in 'Invalid'.
+            print("Invalid Choice. Please try again")
+
 if __name__ == "__main__":
     main()
-            
-
-
-
-
-
-
-
-
-
